@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Nav from '../components/nav'
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
+import config from './config';
 
 import { Button, Row, Col, Form, Card, Alert, Container, InputGroup, FormLabel } from 'react-bootstrap';
 import CircularJSON from "circular-json";
 
 export default function ViewReview() {
+  const BASE_URL=config.API_URL;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [rating, setrating] = useState(" ");
@@ -42,7 +44,7 @@ export default function ViewReview() {
     }
     //   const jsonReq= CircularJSON.stringify(newreview)
 
-    axios.post("http://localhost:8094/review-service/review/create", newreview).then(() => {
+    axios.post(`${BASE_URL}/review-service/review/create`, newreview).then(() => {
       ("rating added")
       setrating('');
       settext('');
@@ -57,7 +59,7 @@ export default function ViewReview() {
 
   function onDelete(id) {
     console.log(id);
-    axios.delete("http://localhost:8094/review-service/review/delete/{id}?id=" + id).then((res) => {
+    axios.delete(`${BASE_URL}/review-service/review/delete/{id}?id=` + id).then((res) => {
       alert('Deleted Successfully');
       window.location.reload();
     }).catch((err) => {
@@ -85,7 +87,7 @@ export default function ViewReview() {
 
   useEffect(() => {
     function getreview() {
-      axios.get('http://localhost:8094/review-service/review/' + userId).then((res) => {
+      axios.get(`${BASE_URL}/review-service/review/` + userId).then((res) => {
         console.log(res.data.response);
         setreview(res.data.response);
 

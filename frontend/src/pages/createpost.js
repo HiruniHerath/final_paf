@@ -3,9 +3,11 @@ import { Card, Col, Row, Form, Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from '../components/nav'
 import axios from "axios";
+import config from "./config";
 
 
 export default function Createpost() {
+    const BASE_URL=config.API_URL;
 
   const [caption, setcaption] = useState(" ");
     const [imageUrls, setimageUrls] = useState(" ");
@@ -35,7 +37,7 @@ export default function Createpost() {
             commentId,createdBy,id,likes,userId
         }
 
-        axios.post("http://localhost:8095/post-service/post/create", newPost).then(() => {
+        axios.post(`${BASE_URL}/post-service/post/create`, newPost).then(() => {
             ("post added")
             setcaption('');
             setimageUrls('');

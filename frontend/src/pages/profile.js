@@ -4,10 +4,12 @@ import { Form, FormControl, InputGroup, Col, Row, Button, Card, Image , Modal } 
 import CardGroup from 'react-bootstrap/CardGroup';
 import { Container } from 'react-bootstrap';
 import axios from "axios"
+import config from "./config";
 
 
 
 export default function Profile() {
+    const BASE_URL=config.API_URL;
  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 const [profile,setprofile] = useState([]);
@@ -38,7 +40,7 @@ const [location,  setlocation] = useState(" ");
 
 useEffect(()=>{
     function getprofile(){
-        axios.get('http://localhost:8093/profile-service/user-profile/'+usernm).then((res)=>{
+        axios.get(`${BASE_URL}/profile-service/user-profile/`+usernm).then((res)=>{
             console.log(res.data.response);
             setprofile(res.data.response);
 
@@ -56,7 +58,7 @@ function sendData(e) {
                       profilePictureUrl
         }
 
-        axios.post("http://localhost:8093/profile-service/user-profile/create", newprofile).then(() => {
+        axios.post(`${BASE_URL}/profile-service/user-profile/create`, newprofile).then(() => {
             ("data added")
                        setbio(bio);
                        setage(age);
