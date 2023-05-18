@@ -36,7 +36,7 @@ export default function CreateOffer() {
 
         const newoffer = {
             userId,
-            id,
+            id:0,
             title,
             description,
             start_date,
@@ -64,11 +64,7 @@ export default function CreateOffer() {
             <Nav></Nav>
             <div style={{ backgroundImage: `url(${"https://images.squarespace-cdn.com/content/v1/57879a6cbebafb879f256735/1667226425853-GFTZP1P5PWAME97VPC6M/AD011219-21_original.jpg"})`, width: "100%", objectFit: "cover", height: "200px" }}>
             </div>
-
             <Row>
-
-
-
                 <Col style={{ paddingLeft: "320px" }} >
                     <h2 style={{ paddingLeft: "320px" }} >Add offers</h2>
                     <div style={{ paddingBottom: '4vh', paddingTop: "6vh", paddingLeft: "7vh" }}>

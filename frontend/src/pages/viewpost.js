@@ -6,7 +6,7 @@ import { Button, Row, Col, Form, Card, Alert, Container } from 'react-bootstrap'
 
 export default function ViewPost() {
 const [post,setpost] = useState([]);
-const [comment,setcomment] = useState([]);
+
 
     const [postId , setpostId ] = useState(" ");
   const handleLike = (id) => {
@@ -42,6 +42,68 @@ useEffect(()=>{
     getpost();
 getcomment();
 },[])
+
+
+
+// comment
+const [text, settext] = useState(" ");
+const [id,setid]=useState('');
+const [postid,setpostid]=useState('');
+const [comment,setcomment] = useState([]);
+
+const handleShow = (id,text,postid ) => { 
+    setid(id);
+    settext(text);
+    setpostid(postid);
+}
+
+
+
+function SendData(e) {
+       
+    e.preventDefault();
+
+    const newreview = {
+      text,
+        id,
+    postid
+    }
+
+    axios.post("http://localhost:8095/post-service/comment/create", newreview).then(() => {
+        ("comment added")
+        settext('');
+       
+
+        window.location.reload();
+
+    }).catch((err) => {
+        alert("error" + err);
+    })
+}
+
+function onDelete(id) {
+    console.log(id);
+    axios.delete("http://localhost:8094/review-service/review/delete/{id}?id=" + id).then((res) => {
+        alert('Deleted Successfully');
+        window.location.reload();
+    }).catch((err) => {
+        alert(err.message);
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -99,7 +161,7 @@ getcomment();
                                                                                                          <svg width="30" height="30" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 18V17C7 14.2386 9.23858 12 12 12V12C14.7614 12 17 14.2386 17 17V18" stroke="currentColor" stroke-linecap="round" /> <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" /> </svg> Username: Nicee
                                                                                                      </Card.Text>
                                                                                                      <hr></hr>
-                                                                                                     <Form>
+                                                                                                     <Form onSubmit={SendData}>
                                                                                                          <Form.Group controlId="formBasicComment">
                                                                                                              <Row>
                                                                                                                  <Col> <Form.Label style={{ paddingTop: "10px", paddingBottom: "5px" }}>Comment</Form.Label></Col>
@@ -107,7 +169,7 @@ getcomment();
                                                                                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"> <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" /> </svg>
                                                                                                                  </Button></Col>
                                                                                                              </Row>
-                                                                                                             <Form.Control as="textarea" rows={3} placeholder="Enter your comment" />
+                                                                                                             <Form.Control as="textarea" rows={3}  onChange={(e) => settext(e.target.value)} placeholder="Enter your comment" />
                                                                                                          </Form.Group>
                                                                                                          <Row style={{ paddingTop: "6px", paddingBottom: "7px" }}>
                                                                                                              <Col><Button variant="outline-dark" type="submit">
