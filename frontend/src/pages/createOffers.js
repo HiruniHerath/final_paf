@@ -6,6 +6,7 @@ import axios from "axios"
 import config from "./config";
 
 
+
 export default function CreateOffer() {
     const BASE_URL=config.API_URL;
     const [show, setShow] = useState(false);
@@ -80,6 +81,7 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Enter offer title: </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={title} rows={3} onChange={(e) => settitle(e.target.value)}
                                                     placeholder=" Enter Title .." />
                                             </Form.Group>
@@ -88,6 +90,7 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Description : </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={description} rows={3} onChange={(e) => setdescription(e.target.value)}
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
@@ -95,13 +98,23 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date from  : </Form.Label>
                                                 <Form.Control type="text"
+<<<<<<< HEAD
+                                                 required
+                                                    value={start_date} rows={3} onChange={(e) => setstart_date(e.target.value)}
+=======
                                                     value={startDate} rows={3} onChange={(e) => setstart_date(e.target.value)}
+>>>>>>> db610a59e6cdc637b62d36ebe8b8d04c1dc2433a
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date to  : </Form.Label>
                                                 <Form.Control type="text"
+<<<<<<< HEAD
+                                                 required
+                                                    value={end_date} rows={3} onChange={(e) => setend_date(e.target.value)}
+=======
                                                     value={endDate} rows={3} onChange={(e) => setend_date(e.target.value)}
+>>>>>>> db610a59e6cdc637b62d36ebe8b8d04c1dc2433a
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
 
@@ -112,6 +125,7 @@ export default function CreateOffer() {
                                             <Form.Group controlId="fileupload">
                                                 <Form.Label>Post offer image</Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={image_url} rows={3} onChange={(e) => setimage_url(e.target.value)}
                                                     placeholder=" Enter your image Url" />
 

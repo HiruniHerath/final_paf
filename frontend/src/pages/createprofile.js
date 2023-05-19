@@ -23,28 +23,30 @@ export default function createAccount() {
     const [age,  setage] = useState(" ");
     const [location,  setlocation] = useState(" ");
     const [profilePictureUrl,  setprofilePictureUrl] = useState(" ");
+
+
     function sendData(e) {
 
         const newprofile = {
-            bio,
-            username,
-            age,
-            location,
-            profilePictureUrl,
-            userId
+            bio :bio,
+            username : username,
+            age : age,
+            location : location,
+            profilePictureUrl : profilePictureUrl,
+            userId: userId
         }
 
         axios.post(`${BASE_URL}/profile-service/user-profile/create`, newprofile).then(() => {
             ("data added")
-            setusername(username)
-            setbio(bio);
-            setage(age);
-            setlocation(location);
-            setprofilePictureUrl(profilePictureUrl);
+            setusername('')
+            setbio('');
+            setage('');
+            setlocation('');
+            setprofilePictureUrl('');
             window.location.reload();
 
         }).catch((err) => {
-            alert("error");
+            alert("error" +err);
         })
     }
     return (
@@ -59,17 +61,12 @@ export default function createAccount() {
                             <Card.Body>
                                 <Form onSubmit={sendData}>
                                     <span className="error-message" style={{ color: "blue" }}></span>
-
                                     <br />
                                     <div >
-
                                         <Row >
-
-
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Username: </Form.Label>
                                                 <Form.Control type="text"
-
                                                               onChange={(e) => setusername(e.target.value)}
                                                     placeholder=" Enter Name .." />
                                             </Form.Group>

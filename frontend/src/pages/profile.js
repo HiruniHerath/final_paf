@@ -32,15 +32,46 @@ const [location,  setlocation] = useState(" ");
            setlocation(location);
            setprofilePictureUrl(profilePictureUrl);
 
-
-
-
        }
+
+       
+    function sendData(e) {
+
+      const newprofile = {
+          bio :bio,
+          username : username,
+          age : age,
+          location : location,
+          profilePictureUrl : profilePictureUrl,
+          userId: userId
+      }
+
+      axios.post(`${BASE_URL}/profile-service/user-profile/create`, newprofile).then(() => {
+          ("data added")
+          setusername('')
+          setbio('');
+          setage('');
+          setlocation('');
+          setprofilePictureUrl('');
+          window.location.reload();
+
+      }).catch((err) => {
+          alert("error" +err);
+      })
+    }
 
 
 useEffect(()=>{
     function getprofile(){
+<<<<<<< HEAD
+<<<<<<< HEAD
+        axios.get('http://localhost:8093/profile-service/user-profile/'+id).then((res)=>{
+=======
+        axios.get(`${BASE_URL}/profile-service/user-profile/`+usernm).then((res)=>{
+>>>>>>> db610a59e6cdc637b62d36ebe8b8d04c1dc2433a
+=======
         axios.get(`${BASE_URL}/profile-service/user-profile/dulmi`).then((res)=>{
+>>>>>>> 121a000e2f2187db1cc68ef14955dd02e35c5a14
             console.log(res.data.response);
             setprofile(res.data.response);
 
