@@ -5,11 +5,12 @@ import Navh from '../components/nav';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios"
+import config from './config';
 
 
 
 export default function OffersView() {
-
+  const BASE_URL=config.API_URL;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
@@ -24,7 +25,8 @@ export default function OffersView() {
   const [offer, setoffer] = useState([]);
 
 
-  const handleShow = (id, title, description, start_date, image_url, end_date, userId) => {
+  const handleShow = (offer) => {
+    const {id, title, description, start_date, image_url, end_date, userId} =offer;
     setShow(true);
     setid(id);
     settitle(title);
@@ -64,7 +66,7 @@ export default function OffersView() {
 
   function onDelete(id) {
     console.log(id);
-    axios.delete("http://localhost:8092/offer-service/offers/delete{id}?id=" + id).then((res) => {
+    axios.delete(`${BASE_URL}/offer-service/offers/delete{id}?id=` + id).then((res) => {
       alert('Deleted Successfully');
       window.location.reload();
     }).catch((err) => {
@@ -76,7 +78,7 @@ export default function OffersView() {
 
   useEffect(() => {
     function getoffer() {
-      axios.get('http://localhost:8092/offer-service/offers/').then((res) => {
+      axios.get(`${BASE_URL}/offer-service/offers/`).then((res) => {
         console.log(res.data.response);
         setoffer(res.data.response);
 
@@ -125,9 +127,9 @@ export default function OffersView() {
                 <Card.Body>
                   <Card.Title>{offer.title}</Card.Title>
                   <Card.Text> Description : {offer.description}</Card.Text>
-                  <Card.Text className="text-muted">Starting Date: {offer.start_date}</Card.Text>
-                  <Card.Text className="text-muted">Expiry: {offer.end_date}</Card.Text>
-                  <Button variant="outline-dark" onClick={handleShow} >EDIT</Button>&nbsp;
+                  <Card.Text className="text-muted">Starting Date: {offer.startDate}</Card.Text>
+                  <Card.Text className="text-muted">Expiry: {offer.endDate}</Card.Text>
+                  {/*<Button variant="outline-dark" key={offer.id} onClick={handleShow} >EDIT</Button>&nbsp;*/}
                   <Button variant="outline-dark" onClick={() => onDelete(offer.id)}>DELETE</Button>
                   <Button variant="dark" style={{ float: 'right' }} onClick={() => claim()}>Claim Offer</Button>
 

@@ -3,18 +3,20 @@ import { Card, Col, Row, Form, Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from '../components/nav'
 import axios from "axios"
+import config from "./config";
 
 
 
 export default function CreateOffer() {
+    const BASE_URL=config.API_URL;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
     const [title, settitle] = useState(" ");
     const [description, setdescription] = useState(" ");
-    const [start_date, setstart_date] = useState(" ");
+    const [startDate, setstart_date] = useState(" ");
     const [image_url, setimage_url] = useState("");
-    const [end_date, setend_date] = useState("");
+    const [endDate, setend_date] = useState("");
     const [id, setid] = useState(0);
     const [search, setSearch] = useState("");
     const userId = 1;
@@ -40,12 +42,12 @@ export default function CreateOffer() {
             id:0,
             title,
             description,
-            start_date,
+            startDate,
             image_url,
-            end_date
+            endDate
         }
 
-        axios.post("http://localhost:8092/offer-service/offers/create", JSON.stringify(newoffer)).then(() => {
+        axios.post(`${BASE_URL}/offer-service/offers/create`, newoffer).then(() => {
             ("New offer added")
             settitle('');
             setdescription('');
@@ -96,15 +98,23 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date from  : </Form.Label>
                                                 <Form.Control type="text"
+<<<<<<< HEAD
                                                  required
                                                     value={start_date} rows={3} onChange={(e) => setstart_date(e.target.value)}
+=======
+                                                    value={startDate} rows={3} onChange={(e) => setstart_date(e.target.value)}
+>>>>>>> db610a59e6cdc637b62d36ebe8b8d04c1dc2433a
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date to  : </Form.Label>
                                                 <Form.Control type="text"
+<<<<<<< HEAD
                                                  required
                                                     value={end_date} rows={3} onChange={(e) => setend_date(e.target.value)}
+=======
+                                                    value={endDate} rows={3} onChange={(e) => setend_date(e.target.value)}
+>>>>>>> db610a59e6cdc637b62d36ebe8b8d04c1dc2433a
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
 
@@ -123,7 +133,7 @@ export default function CreateOffer() {
                                         </Row>
                                     </div>
                                     <div style={{ paddingLeft: "40%" }}>
-                                        <Button type="submit" variant="outline-dark" style={{ width: "120px" }}> Save </Button>{' '} {' '}<Button variant="outline-dark" style={{ width: "120px" }} > Clear </Button>
+                                        <Button type="submit" variant="outline-dark" style={{ width: "120px" }}> Save </Button>{' '} {' '}<Button variant="outline-dark" style={{ width: "120px" }}  href={"/offer"}> Clear </Button>
                                     </div>
                                 </Form>
                             </Card.Body>
