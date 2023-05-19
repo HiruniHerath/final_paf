@@ -15,7 +15,7 @@ export default function createAccount() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [profile,setprofile] = useState([]);
-    const usernm = '';
+    const usernm = 'dulmi';
     const [id, setid] = useState(" ");
     const[ userId, setuserID] = useState(" ");
     const [username, setusername ] = useState(" ");
@@ -24,29 +24,29 @@ export default function createAccount() {
     const [location,  setlocation] = useState(" ");
     const [profilePictureUrl,  setprofilePictureUrl] = useState(" ");
 
-    
+
     function sendData(e) {
 
         const newprofile = {
-            bio,
-            username,
-            age,
-            location,
-            profilePictureUrl,
-            userId
+            bio :bio,
+            username : username,
+            age : age,
+            location : location,
+            profilePictureUrl : profilePictureUrl,
+            userId: userId
         }
 
         axios.post(`${BASE_URL}/profile-service/user-profile/create`, newprofile).then(() => {
             ("data added")
-            setusername(username)
-            setbio(bio);
-            setage(age);
-            setlocation(location);
-            setprofilePictureUrl(profilePictureUrl);
+            setusername('')
+            setbio('');
+            setage('');
+            setlocation('');
+            setprofilePictureUrl('');
             window.location.reload();
 
         }).catch((err) => {
-            alert("error");
+            alert("error" +err);
         })
     }
     return (
