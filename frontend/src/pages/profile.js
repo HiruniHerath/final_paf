@@ -40,7 +40,7 @@ const [location,  setlocation] = useState(" ");
 
 useEffect(()=>{
     function getprofile(){
-        axios.get(`${BASE_URL}/profile-service/user-profile/`+usernm).then((res)=>{
+        axios.get(`${BASE_URL}/profile-service/user-profile/dulmi`).then((res)=>{
             console.log(res.data.response);
             setprofile(res.data.response);
 
