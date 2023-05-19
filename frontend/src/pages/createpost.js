@@ -64,7 +64,7 @@ export default function Createpost() {
                                         <Row >
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Post Tittle: </Form.Label>
-                                                <Form.Control  required type="text" onChange={(e) => setcaption(e.target.value)}
+                                                <Form.Control type="text" onChange={(e) => setcaption(e.target.value)}
                                                     placeholder=" Enter Title .." />
                                             </Form.Group>
                                         </Row>
@@ -72,7 +72,7 @@ export default function Createpost() {
                                         <Row>
                                             <Form.Group controlId="imgfield">
                                                 <Form.Label>Post image</Form.Label>
-                                                <Form.Control  required onChange={(e) => setimageUrls(e.target.value)} type="text" placeholder=" Enter image URL .." />
+                                                <Form.Control onChange={(e) => setimageUrls(e.target.value)} type="text" placeholder=" Enter image URL .." />
                                             </Form.Group>
                                         </Row>
                                     </div>
