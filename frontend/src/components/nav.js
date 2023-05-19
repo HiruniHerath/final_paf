@@ -21,7 +21,7 @@ export default function Navh() {
             <Nav.Link style={{ color: "#ffffff", marginRight: "80px" }} href="/view_review"> Reviws</Nav.Link>
             <Nav.Link style={{ color: "#ffffff", marginRight: "80px" }} href="/offer">  Offers</Nav.Link>
             <Nav.Link style={{ color: "#ffffff", marginRight: "80px" }} href="/viewpost">Uploads</Nav.Link>
-            <Nav.Link style={{ color: "#ffffff", marginRight: "80px" }} href="#pricing">Profile</Nav.Link>
+            <Nav.Link style={{ color: "#ffffff", marginRight: "80px" }} href="/profile">Profile</Nav.Link>
 
           </Nav>
         </Container>

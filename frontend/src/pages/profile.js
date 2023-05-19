@@ -13,7 +13,7 @@ export default function Profile() {
  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 const [profile,setprofile] = useState([]);
-const usernm = 'adithya';
+const usernm = '';
  const [id, setid] = useState(" ");
   const[ userID, setuserID] = useState(" ");
 const [username, setusername ] = useState(" ");
