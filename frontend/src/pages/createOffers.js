@@ -5,6 +5,7 @@ import Nav from '../components/nav'
 import axios from "axios"
 
 
+
 export default function CreateOffer() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -78,6 +79,7 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Enter offer title: </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={title} rows={3} onChange={(e) => settitle(e.target.value)}
                                                     placeholder=" Enter Title .." />
                                             </Form.Group>
@@ -86,6 +88,7 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Description : </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={description} rows={3} onChange={(e) => setdescription(e.target.value)}
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
@@ -93,12 +96,14 @@ export default function CreateOffer() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date from  : </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={start_date} rows={3} onChange={(e) => setstart_date(e.target.value)}
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label >Date to  : </Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={end_date} rows={3} onChange={(e) => setend_date(e.target.value)}
                                                     placeholder=" Enter your description .." />
                                             </Form.Group>
@@ -110,6 +115,7 @@ export default function CreateOffer() {
                                             <Form.Group controlId="fileupload">
                                                 <Form.Label>Post offer image</Form.Label>
                                                 <Form.Control type="text"
+                                                 required
                                                     value={image_url} rows={3} onChange={(e) => setimage_url(e.target.value)}
                                                     placeholder=" Enter your image Url" />
 

@@ -38,7 +38,7 @@ const [location,  setlocation] = useState(" ");
 
 useEffect(()=>{
     function getprofile(){
-        axios.get('http://localhost:8093/profile-service/user-profile/'+usernm).then((res)=>{
+        axios.get('http://localhost:8093/profile-service/user-profile/'+id).then((res)=>{
             console.log(res.data.response);
             setprofile(res.data.response);
 

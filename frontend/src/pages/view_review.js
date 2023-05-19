@@ -124,7 +124,6 @@ export default function ViewReview() {
                     <Form.Label>Rating</Form.Label>
                     <Form.Control type="text" placeholder="#Rating" value={rating} onChange={(e) => setrating(e.target.value)} />
                   </Form.Group>
-
                   <Button variant="dark" type='submit'  >
                     Save Changes
                   </Button>{''}
